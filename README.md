@@ -1,5 +1,22 @@
 # CampEdu
 
+LIVE LINK : https://camp-edufrontend.onrender.com/
+
+Sample Admin Credentials : 
+Login ID - 987654
+Password- 987654
+
+Sample Teacher Credentials : 
+Login ID - 1
+Password- 1
+
+Sample Student Credentials : 
+Login ID - 2
+Password - 2
+
+
+
+
 CampEdu is a web application designed to simplify the management of college academics and also to narrow the communication gap between a student and a proffesor. 
 ## Current Features
 
