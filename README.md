@@ -72,7 +72,7 @@ Password - 2
 git clone <repository_url>
 cd CampEdu
 
-
+```
 ### Running the Backend
 1. Navigate to the backend directory:
    ```bash
