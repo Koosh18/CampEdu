@@ -87,20 +87,6 @@ Password - 2
 git clone <repository_url>
 cd CampEdu
 
-## Technologies Used
-
-### Frontend:
-- React.js
-- Redux
-
-### Backend:
-- Node.js
-- Express.js
-
-### Database:
-- MongoDB
-
-## Setup Instructions
 
 ### Running the Backend
 1. Navigate to the backend directory:
