@@ -65,21 +65,6 @@ Password - 2
 
 ---
 
-## 🖼 Screenshots
-
-### **Login Page**
-![Login Page](screenshots/login.png)
-
-### **Admin Dashboard**
-![Admin Dashboard](screenshots/admin-dashboard.png)
-
-### **Faculty Dashboard**
-![Faculty Dashboard](screenshots/faculty-dashboard.png)
-
-### **Student Dashboard**
-![Student Dashboard](screenshots/student-dashboard.png)
-
-
 ## ⚙️ Setup Instructions
 
 ### 1️⃣ Clone the Repository
