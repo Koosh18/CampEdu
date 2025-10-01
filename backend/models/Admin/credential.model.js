@@ -9,6 +9,19 @@ const adminCredential = new mongoose.Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    default: "admin",
+    enum: ["admin"],
+  },
+  refreshTokenHash: {
+    type: String,
+    default: null,
+  },
+  tokenVersion: {
+    type: Number,
+    default: 0,
+  }
 }, { timestamps: true });
 
 module.exports = mongoose.model("Admin Credential", adminCredential);

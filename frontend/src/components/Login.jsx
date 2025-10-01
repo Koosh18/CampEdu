@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiLogIn } from "react-icons/fi";
-import axios from "axios";
+import api from "../api/client";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { baseApiURL } from "../baseUrl";
@@ -9,20 +10,18 @@ import { baseApiURL } from "../baseUrl";
 const Login = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("Student");
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     if (data.login !== "" && data.password !== "") {
-      const headers = {
-        "Content-Type": "application/json",
-      };
-      axios
-        .post(`${baseApiURL()}/${selected.toLowerCase()}/auth/login`, data, {
-          headers: headers,
-        })
+      api
+        .post(`/${selected.toLowerCase()}/auth/login`, data)
         .then((response) => {
-          navigate(`/${selected.toLowerCase()}`, {
-            state: { type: selected, loginid: response.data.loginid },
-          });
+          const { accessToken, user } = response.data;
+          dispatch({ type: "AUTH_SET_TOKEN", payload: accessToken });
+          dispatch({ type: USER_DATA, payload: user });
+          dispatch({ type: USER_LOGIN_ID, payload: user.loginid });
+          navigate(`/${selected.toLowerCase()}`);
         })
         .catch((error) => {
           toast.dismiss();
