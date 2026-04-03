@@ -1,9 +1,22 @@
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs");
+
+// Always write uploads to backend/media (cwd-independent).
+const mediaDir = path.join(__dirname, "..", "media");
+
+// Ensure the directory exists so uploads (and static serving) don't fail.
+if (!fs.existsSync(mediaDir)) {
+    fs.mkdirSync(mediaDir, { recursive: true });
+}
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "./media"); // Destination directory for storing files
+        // Create folder on-demand (covers deploys where filesystem may start empty).
+        if (!fs.existsSync(mediaDir)) {
+            fs.mkdirSync(mediaDir, { recursive: true });
+        }
+        cb(null, mediaDir); // Destination directory for storing files
     },
     filename: function (req, file, cb) {
         let filename = "";
@@ -18,7 +31,7 @@ const storage = multer.diskStorage({
         } else if (req.body?.type === "material") {
             filename = `${req.body.title}_Subject_${req.body.subject}.pdf`;
         } else if (req.body?.type === "notice") {
-            filename = `Notice_${req.body.title}}.pdf`;
+            filename = `Notice_${req.body.title}.pdf`;
             
         }
         cb(null, filename);
